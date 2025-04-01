@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.github.acnaweb.study_apiw.dto.ProdutoRequestCreate;
 import com.github.acnaweb.study_apiw.model.Produto;
 import com.github.acnaweb.study_apiw.service.ProdutoService;
 
@@ -21,8 +22,9 @@ public class ControllerProduto {
     private ProdutoService produtoService;
 
     @PostMapping
-    public ResponseEntity<Produto> create(@RequestBody Produto request) {
-        Produto produto = produtoService.save(request);
+    public ResponseEntity<Produto> create(@RequestBody ProdutoRequestCreate dto) {
+
+        Produto produto = produtoService.save(dto);
 
         return  ResponseEntity.status(201).body(produto);
     }
